@@ -40,6 +40,8 @@ class Adventure
     var distance: Double;
     var favourite: Bool;
     var itemImages: [UIImage];
+    var description: String;
+    var comments:[String];
     
     init(itemId: Int, category: Category)
     {
@@ -52,6 +54,8 @@ class Adventure
         self.distance = 0;
         self.favourite =  false;
         self.itemImages = [UIImage]();
+        self.description = "";
+        self.comments = [String]();
     }
 
 }

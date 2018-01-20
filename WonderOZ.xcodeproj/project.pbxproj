@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		962B514620129F3D0070B4F5 /* AdvTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B514520129F3D0070B4F5 /* AdvTableViewController.swift */; };
+		962B51482012C9E80070B4F5 /* AdvTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B51472012C9E80070B4F5 /* AdvTableViewCell.swift */; };
+		962B514A201321B20070B4F5 /* AdvDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B5149201321B20070B4F5 /* AdvDetailViewController.swift */; };
+		962B514E201367340070B4F5 /* ComntTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B514D201367340070B4F5 /* ComntTableViewCell.swift */; };
 		96939F572011E1E400B0F4F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939F562011E1E400B0F4F6 /* AppDelegate.swift */; };
-		96939F592011E1E400B0F4F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939F582011E1E400B0F4F6 /* ViewController.swift */; };
 		96939F5C2011E1E400B0F4F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96939F5A2011E1E400B0F4F6 /* Main.storyboard */; };
 		96939F5E2011E1E400B0F4F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96939F5D2011E1E400B0F4F6 /* Assets.xcassets */; };
 		96939F612011E1E400B0F4F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96939F5F2011E1E400B0F4F6 /* LaunchScreen.storyboard */; };
 		96939F6C2011E1E400B0F4F6 /* WonderOZUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939F6B2011E1E400B0F4F6 /* WonderOZUITests.swift */; };
 		96939F7B2011E28B00B0F4F6 /* AdventureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939F792011E28B00B0F4F6 /* AdventureData.swift */; };
 		96939F7C2011E28B00B0F4F6 /* Adventure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939F7A2011E28B00B0F4F6 /* Adventure.swift */; };
-		96939F7F2011E2F100B0F4F6 /* AdventureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939F7D2011E2F100B0F4F6 /* AdventureViewController.swift */; };
 		96939F802011E2F100B0F4F6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939F7E2011E2F100B0F4F6 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,9 +32,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		962B514520129F3D0070B4F5 /* AdvTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvTableViewController.swift; sourceTree = "<group>"; };
+		962B51472012C9E80070B4F5 /* AdvTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvTableViewCell.swift; sourceTree = "<group>"; };
+		962B5149201321B20070B4F5 /* AdvDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvDetailViewController.swift; path = WonderOZ/Controller/AdvDetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		962B514D201367340070B4F5 /* ComntTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComntTableViewCell.swift; sourceTree = "<group>"; };
 		96939F532011E1E400B0F4F6 /* WonderOZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WonderOZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96939F562011E1E400B0F4F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		96939F582011E1E400B0F4F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		96939F5B2011E1E400B0F4F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96939F5D2011E1E400B0F4F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96939F602011E1E400B0F4F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -42,7 +47,6 @@
 		96939F6D2011E1E400B0F4F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96939F792011E28B00B0F4F6 /* AdventureData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureData.swift; sourceTree = "<group>"; };
 		96939F7A2011E28B00B0F4F6 /* Adventure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adventure.swift; sourceTree = "<group>"; };
-		96939F7D2011E2F100B0F4F6 /* AdventureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureViewController.swift; sourceTree = "<group>"; };
 		96939F7E2011E2F100B0F4F6 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,8 +113,10 @@
 			isa = PBXGroup;
 			children = (
 				96939F7E2011E2F100B0F4F6 /* CategoryViewController.swift */,
-				96939F7D2011E2F100B0F4F6 /* AdventureViewController.swift */,
-				96939F582011E1E400B0F4F6 /* ViewController.swift */,
+				962B514520129F3D0070B4F5 /* AdvTableViewController.swift */,
+				962B51472012C9E80070B4F5 /* AdvTableViewCell.swift */,
+				962B5149201321B20070B4F5 /* AdvDetailViewController.swift */,
+				962B514D201367340070B4F5 /* ComntTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -236,11 +242,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				96939F7C2011E28B00B0F4F6 /* Adventure.swift in Sources */,
-				96939F592011E1E400B0F4F6 /* ViewController.swift in Sources */,
-				96939F7F2011E2F100B0F4F6 /* AdventureViewController.swift in Sources */,
+				962B51482012C9E80070B4F5 /* AdvTableViewCell.swift in Sources */,
 				96939F572011E1E400B0F4F6 /* AppDelegate.swift in Sources */,
+				962B514A201321B20070B4F5 /* AdvDetailViewController.swift in Sources */,
 				96939F802011E2F100B0F4F6 /* CategoryViewController.swift in Sources */,
 				96939F7B2011E28B00B0F4F6 /* AdventureData.swift in Sources */,
+				962B514620129F3D0070B4F5 /* AdvTableViewController.swift in Sources */,
+				962B514E201367340070B4F5 /* ComntTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
