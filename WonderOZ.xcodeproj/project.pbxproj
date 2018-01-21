@@ -18,7 +18,13 @@
 		96939F6C2011E1E400B0F4F6 /* WonderOZUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939F6B2011E1E400B0F4F6 /* WonderOZUITests.swift */; };
 		96939F7B2011E28B00B0F4F6 /* AdventureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939F792011E28B00B0F4F6 /* AdventureData.swift */; };
 		96939F7C2011E28B00B0F4F6 /* Adventure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939F7A2011E28B00B0F4F6 /* Adventure.swift */; };
-		96939F802011E2F100B0F4F6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939F7E2011E2F100B0F4F6 /* CategoryViewController.swift */; };
+		9F349096201490C4006E4ABA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F349095201490C4006E4ABA /* Category.swift */; };
+		9F3490982014932E006E4ABA /* Category_imple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3490972014932E006E4ABA /* Category_imple.swift */; };
+		9F382CCC2014B4F200F1BC5F /* CatCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F382CCB2014B4F200F1BC5F /* CatCollectionViewController.swift */; };
+		9F382CCE2014B5DB00F1BC5F /* myCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F382CCD2014B5DB00F1BC5F /* myCell.swift */; };
+		9F382CD02014C8BA00F1BC5F /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F382CCF2014C8BA00F1BC5F /* ProfileController.swift */; };
+		9F382CD220150AF600F1BC5F /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F382CD120150AF600F1BC5F /* EditController.swift */; };
+		9F382CD4201510B700F1BC5F /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F382CD3201510B700F1BC5F /* ProfileData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +53,13 @@
 		96939F6D2011E1E400B0F4F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96939F792011E28B00B0F4F6 /* AdventureData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureData.swift; sourceTree = "<group>"; };
 		96939F7A2011E28B00B0F4F6 /* Adventure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adventure.swift; sourceTree = "<group>"; };
-		96939F7E2011E2F100B0F4F6 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		9F349095201490C4006E4ABA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		9F3490972014932E006E4ABA /* Category_imple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category_imple.swift; sourceTree = "<group>"; };
+		9F382CCB2014B4F200F1BC5F /* CatCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCollectionViewController.swift; sourceTree = "<group>"; };
+		9F382CCD2014B5DB00F1BC5F /* myCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCell.swift; sourceTree = "<group>"; };
+		9F382CCF2014C8BA00F1BC5F /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		9F382CD120150AF600F1BC5F /* EditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditController.swift; sourceTree = "<group>"; };
+		9F382CD3201510B700F1BC5F /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +124,14 @@
 		96939F762011E1ED00B0F4F6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				96939F7E2011E2F100B0F4F6 /* CategoryViewController.swift */,
 				962B514520129F3D0070B4F5 /* AdvTableViewController.swift */,
 				962B51472012C9E80070B4F5 /* AdvTableViewCell.swift */,
 				962B5149201321B20070B4F5 /* AdvDetailViewController.swift */,
 				962B514D201367340070B4F5 /* ComntTableViewCell.swift */,
+				9F382CCB2014B4F200F1BC5F /* CatCollectionViewController.swift */,
+				9F382CCD2014B5DB00F1BC5F /* myCell.swift */,
+				9F382CCF2014C8BA00F1BC5F /* ProfileController.swift */,
+				9F382CD120150AF600F1BC5F /* EditController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -134,6 +149,9 @@
 			children = (
 				96939F7A2011E28B00B0F4F6 /* Adventure.swift */,
 				96939F792011E28B00B0F4F6 /* AdventureData.swift */,
+				9F349095201490C4006E4ABA /* Category.swift */,
+				9F3490972014932E006E4ABA /* Category_imple.swift */,
+				9F382CD3201510B700F1BC5F /* ProfileData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,13 +260,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				96939F7C2011E28B00B0F4F6 /* Adventure.swift in Sources */,
+				9F349096201490C4006E4ABA /* Category.swift in Sources */,
 				962B51482012C9E80070B4F5 /* AdvTableViewCell.swift in Sources */,
+				9F382CD220150AF600F1BC5F /* EditController.swift in Sources */,
+				9F3490982014932E006E4ABA /* Category_imple.swift in Sources */,
+				9F382CCE2014B5DB00F1BC5F /* myCell.swift in Sources */,
 				96939F572011E1E400B0F4F6 /* AppDelegate.swift in Sources */,
+				9F382CCC2014B4F200F1BC5F /* CatCollectionViewController.swift in Sources */,
 				962B514A201321B20070B4F5 /* AdvDetailViewController.swift in Sources */,
-				96939F802011E2F100B0F4F6 /* CategoryViewController.swift in Sources */,
+				9F382CD4201510B700F1BC5F /* ProfileData.swift in Sources */,
 				96939F7B2011E28B00B0F4F6 /* AdventureData.swift in Sources */,
 				962B514620129F3D0070B4F5 /* AdvTableViewController.swift in Sources */,
 				962B514E201367340070B4F5 /* ComntTableViewCell.swift in Sources */,
+				9F382CD02014C8BA00F1BC5F /* ProfileController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
