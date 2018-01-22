@@ -18,7 +18,10 @@ class EditController: UIViewController {
     @IBOutlet weak var Present_Name: UILabel!
     
     @IBAction func SaveButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "SaveTransferSegue", sender: self)
+        //self.performSegue(withIdentifier: "SaveTransferSegue", sender: self)
+        self.dismiss(animated: true, completion: {
+            self.performSegue(withIdentifier: "SaveTransferSegue", sender: self)
+        })
         print(Name_Imple.text!)
         
         if Name_Imple.text != nil { Profile.profileInstance.Username = Name_Imple.text! }
@@ -31,6 +34,10 @@ class EditController: UIViewController {
         super.viewDidLoad()
         
         Present_Name.text = Profile.profileInstance.Username;
+        Name_Imple.text = Profile.profileInstance.Username;
+        Email_Imple.text = Profile.profileInstance.Useremail;
+        Address_Imple.text = Profile.profileInstance.Useraddress;
+        Phone_Imple.text = Profile.profileInstance.Userphone;
         // Do any additional setup after loading the view.
     }
 
