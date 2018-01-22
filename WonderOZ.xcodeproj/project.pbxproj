@@ -11,6 +11,10 @@
 		962B51482012C9E80070B4F5 /* AdvTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B51472012C9E80070B4F5 /* AdvTableViewCell.swift */; };
 		962B514A201321B20070B4F5 /* AdvDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B5149201321B20070B4F5 /* AdvDetailViewController.swift */; };
 		962B514E201367340070B4F5 /* ComntTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B514D201367340070B4F5 /* ComntTableViewCell.swift */; };
+		962DC61020143E7800A9035A /* FavoriteHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962DC60F20143E7800A9035A /* FavoriteHeaderView.swift */; };
+		962DC612201445AA00A9035A /* FavoriteCellectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962DC611201445AA00A9035A /* FavoriteCellectionViewCell.swift */; };
+		962DC61420144EC400A9035A /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962DC61320144EC400A9035A /* FavoriteViewController.swift */; };
+		962DC618201450CC00A9035A /* CategoryClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962DC617201450CC00A9035A /* CategoryClass.swift */; };
 		96939F572011E1E400B0F4F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939F562011E1E400B0F4F6 /* AppDelegate.swift */; };
 		96939F5C2011E1E400B0F4F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96939F5A2011E1E400B0F4F6 /* Main.storyboard */; };
 		96939F5E2011E1E400B0F4F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96939F5D2011E1E400B0F4F6 /* Assets.xcassets */; };
@@ -36,6 +40,10 @@
 		962B51472012C9E80070B4F5 /* AdvTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvTableViewCell.swift; sourceTree = "<group>"; };
 		962B5149201321B20070B4F5 /* AdvDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvDetailViewController.swift; path = WonderOZ/Controller/AdvDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		962B514D201367340070B4F5 /* ComntTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComntTableViewCell.swift; sourceTree = "<group>"; };
+		962DC60F20143E7800A9035A /* FavoriteHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeaderView.swift; sourceTree = "<group>"; };
+		962DC611201445AA00A9035A /* FavoriteCellectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCellectionViewCell.swift; sourceTree = "<group>"; };
+		962DC61320144EC400A9035A /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		962DC617201450CC00A9035A /* CategoryClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryClass.swift; sourceTree = "<group>"; };
 		96939F532011E1E400B0F4F6 /* WonderOZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WonderOZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96939F562011E1E400B0F4F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96939F5B2011E1E400B0F4F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,9 +122,8 @@
 			children = (
 				96939F7E2011E2F100B0F4F6 /* CategoryViewController.swift */,
 				962B514520129F3D0070B4F5 /* AdvTableViewController.swift */,
-				962B51472012C9E80070B4F5 /* AdvTableViewCell.swift */,
 				962B5149201321B20070B4F5 /* AdvDetailViewController.swift */,
-				962B514D201367340070B4F5 /* ComntTableViewCell.swift */,
+				962DC61320144EC400A9035A /* FavoriteViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -124,6 +131,10 @@
 		96939F772011E1F800B0F4F6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				962B514D201367340070B4F5 /* ComntTableViewCell.swift */,
+				962B51472012C9E80070B4F5 /* AdvTableViewCell.swift */,
+				962DC60F20143E7800A9035A /* FavoriteHeaderView.swift */,
+				962DC611201445AA00A9035A /* FavoriteCellectionViewCell.swift */,
 				96939F5A2011E1E400B0F4F6 /* Main.storyboard */,
 			);
 			path = View;
@@ -133,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				96939F7A2011E28B00B0F4F6 /* Adventure.swift */,
+				962DC617201450CC00A9035A /* CategoryClass.swift */,
 				96939F792011E28B00B0F4F6 /* AdventureData.swift */,
 			);
 			path = Model;
@@ -188,7 +200,7 @@
 				TargetAttributes = {
 					96939F522011E1E400B0F4F6 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					96939F662011E1E400B0F4F6 = {
 						CreatedOnToolsVersion = 9.2;
@@ -241,13 +253,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				962DC61420144EC400A9035A /* FavoriteViewController.swift in Sources */,
 				96939F7C2011E28B00B0F4F6 /* Adventure.swift in Sources */,
 				962B51482012C9E80070B4F5 /* AdvTableViewCell.swift in Sources */,
 				96939F572011E1E400B0F4F6 /* AppDelegate.swift in Sources */,
 				962B514A201321B20070B4F5 /* AdvDetailViewController.swift in Sources */,
+				962DC61020143E7800A9035A /* FavoriteHeaderView.swift in Sources */,
 				96939F802011E2F100B0F4F6 /* CategoryViewController.swift in Sources */,
+				962DC612201445AA00A9035A /* FavoriteCellectionViewCell.swift in Sources */,
 				96939F7B2011E28B00B0F4F6 /* AdventureData.swift in Sources */,
 				962B514620129F3D0070B4F5 /* AdvTableViewController.swift in Sources */,
+				962DC618201450CC00A9035A /* CategoryClass.swift in Sources */,
 				962B514E201367340070B4F5 /* ComntTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,11 +417,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WonderOZ/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = iOSWorld.WonderOZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -415,11 +433,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WonderOZ/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = iOSWorld.WonderOZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -1,18 +1,15 @@
 //
-//  AdvTableViewCell.swift
+//  FavoriteCellectionViewCell.swift
 //  WonderOZ
 //
-//  Created by Jason-Zhuang on 20/1/18.
+//  Created by Jason-Zhuang on 21/1/18.
 //  Copyright © 2018 iOSWorld. All rights reserved.
 //
 
 import UIKit
 
-class AdvTableViewCell: UITableViewCell
+class FavoriteCellectionViewCell: UICollectionViewCell
 {
-
-    
-    
     @IBOutlet weak var cellView: UIView!
     
     @IBOutlet weak var adventureImage: UIImageView!
@@ -30,12 +27,4 @@ class AdvTableViewCell: UITableViewCell
     @IBOutlet weak var star4: UIImageView!
     
     @IBOutlet weak var star5: UIImageView!
-    
-    override func awakeFromNib()
-    {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    
 }

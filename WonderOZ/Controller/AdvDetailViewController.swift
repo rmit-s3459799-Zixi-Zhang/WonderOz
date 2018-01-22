@@ -114,6 +114,7 @@ class AdvDetailViewController: UIViewController,UITableViewDelegate, UITableView
         AdventureData.adventureInstance.adventureMap![(adventure?.itemId)!]?.rate = 2;
         adventure?.rate = 2;
     }
+    
     @IBAction func btnStar3Clicked(_ sender: UIButton)
     {
         btnStar1.setImage(UIImage(named: "star-small-fill"), for: UIControlState.normal);

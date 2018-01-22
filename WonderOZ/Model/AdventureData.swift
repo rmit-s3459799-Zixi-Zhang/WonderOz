@@ -13,6 +13,8 @@ class AdventureData
     var applicationName: String;
     
     var adventureMap : Dictionary<Int, Adventure>?;
+
+    var adventureCategories: [CategoryClass]?;
     
     static let adventureInstance = AdventureData(argName: "WonderOZ");
     
@@ -20,6 +22,28 @@ class AdventureData
     {
         self.applicationName = argName;
         self.adventureMap = initAdventureData();
+        self.adventureCategories = initAdventureCategories();
+    }
+    
+    func initAdventureCategories() -> [CategoryClass]
+    {
+        var returnValue = [CategoryClass]();
+        
+        let category1: CategoryClass = CategoryClass(categoryName: "camping", adventures: getAdventuresByCategory(category: .camping))
+        let category2: CategoryClass = CategoryClass(categoryName: "fishing", adventures: getAdventuresByCategory(category: .fishing))
+        let category3: CategoryClass = CategoryClass(categoryName: "hiking" , adventures: getAdventuresByCategory(category: .hiking))
+        let category4: CategoryClass = CategoryClass(categoryName: "surfing", adventures: getAdventuresByCategory(category: .surfing))
+        let category5: CategoryClass = CategoryClass(categoryName: "biking" , adventures: getAdventuresByCategory(category: .biking))
+        let category6: CategoryClass = CategoryClass(categoryName: "diving" , adventures: getAdventuresByCategory(category: .diving))
+        
+        returnValue.append(category1);
+        returnValue.append(category2);
+        returnValue.append(category3);
+        returnValue.append(category4);
+        returnValue.append(category5);
+        returnValue.append(category6);
+        
+        return returnValue;
     }
     
     func initAdventureData() -> Dictionary<Int, Adventure>
@@ -47,7 +71,7 @@ class AdventureData
         myAdventure2.mapPosition.longitude = "144.189826";
         myAdventure2.rate = 4;
         myAdventure2.distance = 0;
-        myAdventure2.favourite = true;
+        myAdventure2.favourite = false;
         myAdventure2.itemImages = [#imageLiteral(resourceName: "camping2-1"), #imageLiteral(resourceName: "camping2-2"), #imageLiteral(resourceName: "camping2-3"), #imageLiteral(resourceName: "camping2-4")];
         myAdventure2.description = "BBBBBBBBBBBBBBB"
         myAdventure2.comments = ["Adventure Comment1","Comment 2"]
@@ -73,7 +97,7 @@ class AdventureData
         myAdventure4.mapPosition.longitude = "144.965251";
         myAdventure4.rate = 3;
         myAdventure4.distance = 0;
-        myAdventure4.favourite = false;
+        myAdventure4.favourite = true;
         myAdventure4.itemImages = [#imageLiteral(resourceName: "fishing2-1"), #imageLiteral(resourceName: "fishing2-2"), #imageLiteral(resourceName: "fishing2-3"), #imageLiteral(resourceName: "fishing2-4")];
         myAdventure4.description = "DDDDDDDDDDDDDDDDDDDD"
         myAdventure4.comments = ["Adventure Comment1","Comment 2"]
@@ -107,6 +131,22 @@ class AdventureData
         return returnMap.count;
     }
     
+    //Get a Array of Adventure by category
+    func getAdventuresByCategory(category:Category) -> [Adventure]
+    {
+        var adventureList = [Adventure]();
+        for objKey in (adventureMap?.keys)!
+        {
+            let myAdventure: Adventure = adventureMap![objKey]!;
+            
+            if category == myAdventure.category
+            {
+                adventureList.append(myAdventure);
+            }
+        }
+        return adventureList;
+    }
+    
     //Get my favourite Adventures from database or data Structue
     func getFavouriteAdventures(returnMap: inout [Int:Adventure]) -> Int
     {
@@ -118,6 +158,45 @@ class AdventureData
             }
         }
         return returnMap.count;
+    }
+    
+    //Get a Array of My favorite Adventure by category
+    func getFavouriteAdventures(category:Category) -> [Adventure]
+    {
+        var adventureList = [Adventure]();
+        for objKey in (adventureMap?.keys)!
+        {
+            let myAdventure: Adventure = adventureMap![objKey]!;
+            
+            if category == myAdventure.category && myAdventure.favourite == true
+            {
+                adventureList.append(myAdventure);
+            }
+        }
+        return adventureList;
+    }
+    
+    //Get a Array of My favorite Adventure by category
+    func getFavouriteCategories() -> [CategoryClass]
+    {
+        var returnValue = [CategoryClass]();
+        
+        let category1: CategoryClass = CategoryClass(categoryName: "camping", adventures: getFavouriteAdventures(category: .camping))
+        let category2: CategoryClass = CategoryClass(categoryName: "fishing", adventures: getFavouriteAdventures(category: .fishing))
+        let category3: CategoryClass = CategoryClass(categoryName: "hiking" , adventures: getFavouriteAdventures(category: .hiking))
+        let category4: CategoryClass = CategoryClass(categoryName: "surfing", adventures: getFavouriteAdventures(category: .surfing))
+        let category5: CategoryClass = CategoryClass(categoryName: "biking" , adventures: getFavouriteAdventures(category: .biking))
+        let category6: CategoryClass = CategoryClass(categoryName: "diving" , adventures: getFavouriteAdventures(category: .diving))
+        
+        returnValue.append(category1);
+        returnValue.append(category2);
+        returnValue.append(category3);
+        returnValue.append(category4);
+        returnValue.append(category5);
+        returnValue.append(category6);
+        
+        return returnValue;
+       
     }
     
     

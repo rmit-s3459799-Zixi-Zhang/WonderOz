@@ -1,66 +1,77 @@
 //
-//  AdvTableViewController.swift
+//  FavoriteViewController.swift
 //  WonderOZ
 //
-//  Created by Jason-Zhuang on 20/1/18.
+//  Created by Jason-Zhuang on 21/1/18.
 //  Copyright © 2018 iOSWorld. All rights reserved.
 //
 
 import UIKit
 
-class AdvTableViewController: UITableViewController
+private let reuseIdentifier = "Cell"
+
+class FavoriteViewController: UICollectionViewController
 {
-    var adventureLst:[Adventure] = AdventureData.adventureInstance.getAdventuresList()
+
+    //var myFavoriteCategory = AdventureData.adventureInstance.getFavouriteCategories();
+    var myFavoriteCategory = [CategoryClass]()
     
+    struct StoryBoard
+    {
+        static let favoriteCell = "favoriteCell"
+        static let favoriteHeaderView   = "favoriteHeaderView"
+        static let showDetailSegue = "showFavoriteDetial"
+        static let leftAndRightPaddings: CGFloat = 2.0
+        static let numberOfItemsPerRow:CGFloat = 2.0
+    }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        //self.tableView.reloadData();
+        // Do any additional setup after loading the view.
+        //let myCollectionViewWith = collectionView?.frame.width;
+        // let myItemWidth = (myCollectionViewWith! - StoryBoard.leftAndRightPaddings)/StoryBoard.numberOfItemsPerRow;
+        //let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        //layout.itemSize = CGSize(width: myItemWidth, height: myItemWidth)
+        
     }
-
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-    }
-
+    
     override func viewDidAppear(_ animated: Bool)
     {
+        self.myFavoriteCategory = AdventureData.adventureInstance.getFavouriteCategories();
+        collectionView?.reloadData();
         
-        tableView.reloadData();
-        
-    }
-    
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int
-    {
-        return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func numberOfSections(in collectionView: UICollectionView) -> Int
     {
-        let listCount:Int = self.adventureLst.count;
-        return listCount;
+        return self.myFavoriteCategory.count
     }
-
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        // Configure the cell...
-        let adventure = self.adventureLst[indexPath.row]
+        return self.myFavoriteCategory[section].adventureList.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
+        let cell = collectionView.dequeueReusableCell( withReuseIdentifier:StoryBoard.favoriteCell, for: indexPath ) as! FavoriteCellectionViewCell
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "adventureViewCell", for: indexPath) as! AdvTableViewCell
+        let categoryClass = myFavoriteCategory[indexPath.section];
         
-        cell.selectionStyle = .none;
+        let adventureList = categoryClass.adventureList
+        
+        let adventure  = adventureList[indexPath.item]
+       
         //==========
         cell.adventureTitle.text  = adventure.title
             + "\n" + adventure.address
-            + "\n" + "\(String(adventure.distance))( km away)"; 
+            + "\n" + "\(String(adventure.distance))( km away)";
         //==========
         cell.adventureImage.image = adventure.itemImages[0]
         
         //==========
-        cell.btnFavorite.tag = indexPath.row;
+        cell.btnFavorite.tag = indexPath.item;
         if (adventure.favourite == false)
         {
             cell.btnFavorite.setImage(UIImage(named: "favorite-small-blank"), for: UIControlState.normal)
@@ -111,53 +122,35 @@ class AdvTableViewController: UITableViewController
             break
         }
         
-        
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        return 200;
-    }
-    
-    @IBAction func favoriteClicked(_ sender: UIButton)
-    {
-        let itemId = adventureLst[sender.tag].itemId
-        let adventure = AdventureData.adventureInstance.adventureMap![itemId]
-        if (adventure?.favourite == true)
-        {
-            adventure?.favourite = false
-        }else
-        {
-            adventure?.favourite = true
-        }
-        self.tableView.reloadData();
         
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
+    {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: StoryBoard.favoriteHeaderView, for: indexPath) as! FavoriteHeaderView
+        
+        let category = myFavoriteCategory[indexPath.section]
+        
+        headerView.categoryTitle.text = category.categoryName
+        
+        return headerView;
+        
+    }
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        let category = self.myFavoriteCategory[indexPath.section]
+        let adventure = category.adventureList[indexPath.item]
+        self.performSegue(withIdentifier: StoryBoard.showDetailSegue, sender: adventure)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        if let identifier = segue.identifier
+        if segue.identifier == StoryBoard.showDetailSegue
         {
-            switch identifier {
-            case "showDetail":
-                let adventureDVC = segue.destination as! AdvDetailViewController
-                if let indexPath = tableView.indexPath(for: sender as! UITableViewCell)
-                {
-                    adventureDVC.adventure = adventureLst[indexPath.row]
-                }
-            default:
-                break
-            }
-            
+            let detailViewController = segue.destination as! AdvDetailViewController
+            detailViewController.adventure = sender as? Adventure
         }
-        
     }
-
 }
