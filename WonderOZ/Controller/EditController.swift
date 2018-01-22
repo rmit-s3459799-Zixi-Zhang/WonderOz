@@ -22,12 +22,16 @@ class EditController: UIViewController {
         self.dismiss(animated: true, completion: {
             self.performSegue(withIdentifier: "SaveTransferSegue", sender: self)
         })
-        print(Name_Imple.text!)
         
-        if Name_Imple.text != nil { Profile.profileInstance.Username = Name_Imple.text! }
-        if Email_Imple.text != nil { Profile.profileInstance.Useremail = Email_Imple.text! }
-        if Address_Imple.text != nil { Profile.profileInstance.Useraddress = Address_Imple.text! }
-        if Phone_Imple.text != nil { Profile.profileInstance.Userphone = Phone_Imple.text! }
+        
+        if Name_Imple.text != "" { Profile.profileInstance.Username = Name_Imple.text! }
+        if Email_Imple.text != "" { Profile.profileInstance.Useremail = Email_Imple.text! }
+        if Address_Imple.text != "" { Profile.profileInstance.Useraddress = Address_Imple.text! }
+        if Phone_Imple.text != "" { Profile.profileInstance.Userphone = Phone_Imple.text! }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     override func viewDidLoad() {
