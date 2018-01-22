@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // Override point for customization after application launch.
         var _: Dictionary<Int, Adventure> = AdventureData.adventureInstance.adventureMap!;
-        var _: Dictionary<Int, category> = CategoryData.cateInstance.cateMap!;
+        var _: [category] = CategoryData.cateInstance.cateMap;
         _ = Profile();
         print("0===========")
         return true

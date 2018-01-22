@@ -18,9 +18,9 @@ struct Coordinate
 }
 
 //types of Adventure
-enum Category
+enum Category : Int
 {
-    case camping
+    case camping = 0
     case fishing
     case hiking
     case surfing

@@ -11,12 +11,13 @@ import UIKit
 class AdvTableViewController: UITableViewController
 {
     var adventureLst:[Adventure] = AdventureData.adventureInstance.getAdventuresList()
-    
+    var seleted_Index:Category?
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         //self.tableView.reloadData();
+        //print(self.seleted_Index!)
     }
 
     override func didReceiveMemoryWarning()
@@ -134,6 +135,8 @@ class AdvTableViewController: UITableViewController
             adventure?.favourite = true
         }
         self.tableView.reloadData();
+        
+        print(self.seleted_Index)
         
     }
     
