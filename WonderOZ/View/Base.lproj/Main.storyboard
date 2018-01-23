@@ -693,10 +693,10 @@
             </objects>
             <point key="canvasLocation" x="622" y="629"/>
         </scene>
-        <!--View Controller-->
+        <!--New Adv View Controller-->
         <scene sceneID="5xy-v9-AHs">
             <objects>
-                <viewController id="EFH-5U-H1y" sceneMemberID="viewController">
+                <viewController id="EFH-5U-H1y" customClass="NewAdvViewController" customModule="WonderOZ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pW4-WU-z5o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -751,8 +751,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
                             </button>
+                            <connections>
+                                <action selector="saveFunc:" destination="EFH-5U-H1y" id="noO-ER-7wo"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="Descript" destination="xz0-5I-C1r" id="dHE-7e-d6C"/>
+                        <outlet property="Title" destination="Aso-Ur-OJY" id="ecm-Bh-Z4y"/>
+                        <outlet property="cate" destination="dUn-34-bfB" id="tRt-vl-GGM"/>
+                        <outlet property="location" destination="6m9-F8-hwR" id="qRP-Ug-OWj"/>
+                        <outlet property="saveFunc" destination="qiB-bx-Jjx" id="RUy-4o-pjf"/>
+                        <outlet property="tit" destination="Aso-Ur-OJY" id="IZn-rS-rbX"/>
+                        <outlet property="title" destination="Aso-Ur-OJY" id="UlW-Zk-5es"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0v-1b-W37" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
