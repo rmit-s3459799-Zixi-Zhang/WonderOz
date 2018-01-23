@@ -18,19 +18,39 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let itemsize = myCollectionView.frame.size.width/2 - 2;
-        //print(itemSize);
+        /*let itemsize = myCollectionView.frame.size.width/2 - 2;
+        print(itemsize);
         
         let layout = UICollectionViewFlowLayout();
-        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        //layout.sectionInset = UIEdgeInsetsMake(20, 0, 10, 0)
         layout.itemSize = CGSize(width: itemsize, height: itemsize);
-        layout.minimumInteritemSpacing = 1;
-        layout.minimumLineSpacing = 1;
+        layout.minimumInteritemSpacing = 2;
+        layout.minimumLineSpacing = 2;
+        myCollectionView.setCollectionViewLayout(layout, animated: true)
+        myCollectionView.reloadData()*/
         
-        myCollectionView.collectionViewLayout = layout;
+        //myCollectionView.collectionViewLayout = layout;
+        
+       
         //layout.itemSize = CGSize(width: itemSize)
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let itemsize = myCollectionView.frame.size.width/2 - 2;
+        print(itemsize);
+        
+        let layout = UICollectionViewFlowLayout();
+        //layout.sectionInset = UIEdgeInsetsMake(20, 0, 10, 0)
+        layout.itemSize = CGSize(width: itemsize, height: itemsize);
+        layout.minimumInteritemSpacing = 2;
+        layout.minimumLineSpacing = 2;
+        myCollectionView.setCollectionViewLayout(layout, animated: true)
+        myCollectionView.reloadData()
+        
+        //myCollectionView.collectionViewLayout = layout;
     }
     
     override func didReceiveMemoryWarning() {

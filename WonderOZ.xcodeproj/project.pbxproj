@@ -25,6 +25,7 @@
 		9F382CD02014C8BA00F1BC5F /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F382CCF2014C8BA00F1BC5F /* ProfileController.swift */; };
 		9F382CD220150AF600F1BC5F /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F382CD120150AF600F1BC5F /* EditController.swift */; };
 		9F382CD4201510B700F1BC5F /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F382CD3201510B700F1BC5F /* ProfileData.swift */; };
+		9F41FD59201717E800269CD2 /* NewAdvViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41FD58201717E800269CD2 /* NewAdvViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		9F382CCF2014C8BA00F1BC5F /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		9F382CD120150AF600F1BC5F /* EditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditController.swift; sourceTree = "<group>"; };
 		9F382CD3201510B700F1BC5F /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
+		9F41FD58201717E800269CD2 /* NewAdvViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAdvViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				962B514D201367340070B4F5 /* ComntTableViewCell.swift */,
 				9F382CCF2014C8BA00F1BC5F /* ProfileController.swift */,
 				9F382CD120150AF600F1BC5F /* EditController.swift */,
+				9F41FD58201717E800269CD2 /* NewAdvViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				9F1C78472015797E00C8E3E7 /* CategoryCollectionViewCell.swift in Sources */,
 				962B514A201321B20070B4F5 /* AdvDetailViewController.swift in Sources */,
 				9F382CD4201510B700F1BC5F /* ProfileData.swift in Sources */,
+				9F41FD59201717E800269CD2 /* NewAdvViewController.swift in Sources */,
 				96939F7B2011E28B00B0F4F6 /* AdventureData.swift in Sources */,
 				962B514620129F3D0070B4F5 /* AdvTableViewController.swift in Sources */,
 				962B514E201367340070B4F5 /* ComntTableViewCell.swift in Sources */,

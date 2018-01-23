@@ -13,6 +13,13 @@ class AdvTableViewController: UITableViewController
     var adventureLst:[Adventure] = AdventureData.adventureInstance.getAdventuresList()
     var seleted_Index:Category?
     
+    
+    @IBAction func NewAdv(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "AddNewSegue", sender: self)
+        
+        //present(NewAdvNaviController, animated: true, completion: nil)
+    }
     override func viewDidLoad()
     {
         super.viewDidLoad()
