@@ -31,6 +31,59 @@ class WonderOZUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        
+        
+        let app = XCUIApplication()
+        app.collectionViews.cells.otherElements.containing(.image, identifier:"camping").element.tap()
+        app.tables/*@START_MENU_TOKEN@*/.buttons["favorite small blank"]/*[[".cells.buttons[\"favorite small blank\"]",".buttons[\"favorite small blank\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.navigationBars["Adventures"].buttons["Category"].tap()
+        
+        
+        
+    }
+    
+    func testAdv() {
+        
+        
+        
+        /*let app = XCUIApplication()
+        app.tabBars.buttons["Adventure"].tap()
+        app.navigationBars["All Adventures"].buttons["Add"].tap()
+        app.textFields["Category :"].tap()
+        app/*@START_MENU_TOKEN@*/.pickerWheels["camping"].press(forDuration: 0.9);/*[[".pickers.pickerWheels[\"camping\"]",".tap()",".press(forDuration: 0.9);",".pickerWheels[\"camping\"]"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/
+        
+        let titleTextField = app.textFields["Title :"]
+        titleTextField.tap()
+        titleTextField.typeText("Water Park")
+        app.navigationBars["WonderOZ.NewAdvView"].buttons["Save"].tap()*/
+        
+        
+        let app = XCUIApplication()
+        app.tabBars.buttons["Adventure"].tap()
+        app.navigationBars["All Adventures"].buttons["Add"].tap()
+        
+        let titleTextField = app.textFields["Title :"]
+        titleTextField.tap()
+        titleTextField.typeText("Water Park")
+        
+        let locationTextField = app.textFields["Location :"]
+        locationTextField.tap()
+        locationTextField.tap()
+        locationTextField.typeText("123 Ave")
+        
+        let categoryTextfield = app.textFields["Category :"]
+        categoryTextfield.tap()
+        //app/*@START_MENU_TOKEN@*/.pickerWheels["camping"].tap()/*[[".pickers.pickerWheels[\"camping\"]",".tap()",".press(forDuration: 1.0);",".pickerWheels[\"camping\"]"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,1]]@END_MENU_TOKEN@*/
+        categoryTextfield.pickerWheels["camping"].swipeDown()
+        
+        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
+        textView.tap()
+        textView.typeText("AAAAAAA")
+        app.navigationBars["WonderOZ.NewAdvView"].buttons["Save"].tap()
+        app.tables.cells.containing(.staticText, identifier:"Water Park 123 Ave 0.0( km away)").buttons["favorite small blank"].tap()
+       
+
     }
     
 }

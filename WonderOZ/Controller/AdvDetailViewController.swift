@@ -114,6 +114,7 @@ class AdvDetailViewController: UIViewController,UITableViewDelegate, UITableView
         AdventureData.adventureInstance.adventureMap![(adventure?.itemId)!]?.rate = 2;
         adventure?.rate = 2;
     }
+    
     @IBAction func btnStar3Clicked(_ sender: UIButton)
     {
         btnStar1.setImage(UIImage(named: "star-small-fill"), for: UIControlState.normal);
@@ -134,6 +135,7 @@ class AdvDetailViewController: UIViewController,UITableViewDelegate, UITableView
         AdventureData.adventureInstance.adventureMap![(adventure?.itemId)!]?.rate = 4;
         adventure?.rate = 4;
     }
+    
     @IBAction func btnStar5Clicked(_ sender: UIButton)
     {
         btnStar1.setImage(UIImage(named: "star-small-fill"), for: UIControlState.normal);
@@ -143,6 +145,22 @@ class AdvDetailViewController: UIViewController,UITableViewDelegate, UITableView
         btnStar5.setImage(UIImage(named: "star-small-fill"), for: UIControlState.normal);
         AdventureData.adventureInstance.adventureMap![(adventure?.itemId)!]?.rate = 5;
         adventure?.rate = 5;
+    }
+    
+    @IBAction func btnMap(_ sender: UIButton)
+    {
+        popOverWindow(msg: "The function which is used to invoke REST API will be implemented in Assignment 2")
+    }
+    
+    func popOverWindow(msg:String)
+    {
+        let popOverVC = UIStoryboard(name:"Main", bundle:nil);
+        let pp = popOverVC.instantiateViewController(withIdentifier: "sbPopUpId") as! PopupViewController;
+        pp.mess = msg;
+        pp.view.frame = self.view.frame;
+        self.addChildViewController(pp);
+        self.view.addSubview(pp.view);
+        pp.didMove(toParentViewController: self);
     }
     
     func saveComment(_ sender:Any)

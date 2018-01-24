@@ -11,20 +11,19 @@ import UIKit
 class AdvTableViewController: UITableViewController
 {
     var adventureLst:[Adventure] = AdventureData.adventureInstance.getAdventuresList()
-    var seleted_Index:Category?
     
+    var myCategory:Category?
     
-    @IBAction func NewAdv(_ sender: Any) {
-        
-        self.performSegue(withIdentifier: "AddNewSegue", sender: self)
-        
-        //present(NewAdvNaviController, animated: true, completion: nil)
-    }
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        //self.tableView.reloadData();
-        //print(self.seleted_Index!)
+        if myCategory != nil
+        {
+            self.adventureLst = AdventureData.adventureInstance.getAdventuresByCategory(category: myCategory!)
+        }else
+        {
+            self.tabBarController?.title = "All Adventrues"
+        }
     }
 
     override func didReceiveMemoryWarning()
@@ -34,13 +33,17 @@ class AdvTableViewController: UITableViewController
 
     override func viewDidAppear(_ animated: Bool)
     {
-        
+        if myCategory != nil
+        {
+            self.adventureLst = AdventureData.adventureInstance.getAdventuresByCategory(category: myCategory!)
+        }else
+        {
+            self.tabBarController?.title = "All Adventrues"
+            self.adventureLst = AdventureData.adventureInstance.getAdventuresList();
+        }
         tableView.reloadData();
         
     }
-    
-    
-    
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int
@@ -61,6 +64,7 @@ class AdvTableViewController: UITableViewController
         let adventure = self.adventureLst[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "adventureViewCell", for: indexPath) as! AdvTableViewCell
+        
         cell.selectionStyle = .none;
         //==========
         cell.adventureTitle.text  = adventure.title
@@ -143,8 +147,6 @@ class AdvTableViewController: UITableViewController
         }
         self.tableView.reloadData();
         
-        print(self.seleted_Index)
-        
     }
     
     
@@ -157,42 +159,32 @@ class AdvTableViewController: UITableViewController
         // Pass the selected object to the new view controller.
         if let identifier = segue.identifier
         {
-            switch identifier {
-            case "showDetail":
-                let adventureDVC = segue.destination as! AdvDetailViewController
-                if let indexPath = tableView.indexPath(for: sender as! UITableViewCell)
-                {
-                    adventureDVC.adventure = adventureLst[indexPath.row]
-                }
-            default:
-                break
+            switch identifier
+            {
+                case "showDetail":
+                    let adventureDVC = segue.destination as! AdvDetailViewController
+                    if let indexPath = tableView.indexPath(for: sender as! UITableViewCell)
+                    {
+                        adventureDVC.adventure = adventureLst[indexPath.row]
+                    }
+                case "showDetailFromCategory":
+                    let adventureDVC = segue.destination as! AdvDetailViewController
+                    if let indexPath = tableView.indexPath(for: sender as! UITableViewCell)
+                    {
+                        adventureDVC.adventure = adventureLst[indexPath.row]
+                    }
+                default:
+                    break
             }
             
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
+    }
+    
+    @IBAction func addClicked(_ sender: UIBarButtonItem)
+    {
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
- 
 
 }

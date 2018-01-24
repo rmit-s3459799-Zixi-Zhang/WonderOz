@@ -18,14 +18,34 @@ struct Coordinate
 }
 
 //types of Adventure
-enum Category : Int
+enum Category
 {
-    case camping = 0
+    case camping
     case fishing
     case hiking
     case surfing
     case biking
     case diving
+    
+    func getDescription() -> String
+    {
+        switch self
+        {
+        case .camping:
+            return "camping"
+        case .fishing:
+            return "fishing"
+        case .hiking:
+            return "hiking"
+        case .surfing:
+            return "surfing"
+        case .biking:
+            return "biking"
+        case .diving:
+            return "diving"
+        
+        }
+    }
 }
 
 //the main model class of Adventure

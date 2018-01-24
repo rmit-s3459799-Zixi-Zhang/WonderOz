@@ -8,9 +8,10 @@
 
 import UIKit
 
-class NewAdvViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class NewAdvViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate
+{
 
-    var adventureLst = AdventureData.adventureInstance.adventureMap
+    //var adventureLst = AdventureData.adventureInstance.adventureMap
     var adventure: Adventure?
     var Picker_index:Int = 0
     
@@ -21,50 +22,68 @@ class NewAdvViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
  
     @IBOutlet weak var CatePicker: UIPickerView!
     
-    @IBAction func saveFunc(_ sender: Any) {
-        adventure = Adventure(itemId: ((adventureLst?.count)! + 1), category: Category.camping)
+    @IBAction func saveFunc(_ sender: Any)
+    {
+        if TitleText.text! == ""
+        {
+            popOverWindow(msg: "Please input the Adventure Name!")
+            TitleText.backgroundColor = UIColor.yellow
+            return;
+        }
+        let count = AdventureData.adventureInstance.adventureMap?.count;
+        adventure = Adventure(itemId: (count! + 1), category: Category.camping)
         adventure?.title = TitleText.text!
         adventure?.address = location.text!
         adventure?.description = Descript.text!
         adventure?.category = getCategory(index: Picker_index)
-        print("Test")
-        print(adventure?.title)
-        print(adventure?.address)
-        print(adventure?.category)
-        print( (adventureLst?.count)!)
-        adventureLst?.updateValue(adventure!, forKey: (adventure?.itemId)!)
+        adventure?.itemImages = [UIImage(named: "logo")!]
+        //print("Test")
+        //print(adventure?.title)
+        //print(adventure?.address)
+        //print(adventure?.category)
+        //print( (adventureLst?.count)!)
+        AdventureData.adventureInstance.adventureMap?.updateValue(adventure!, forKey: (adventure?.itemId)!);
+        
+        self.navigationController?.popToRootViewController(animated: true)
     }
-    var cate_string = ["Camping", "Fishing", "Hiking", "Surfing", "Biking", "Diving"]
+    var cate_string = ["camping", "fishing", "hiking", "surfing", "biking", "diving"]
     
     
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
         return cate_string.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    {
         self.view.endEditing(true)
         return cate_string[row]
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
         self.cate.text = self.cate_string[row]
         self.CatePicker.isHidden = true
         Picker_index = row
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == self.cate{
+    func textFieldDidBeginEditing(_ textField: UITextField)
+    {
+        if textField == self.cate
+        {
             self.CatePicker.isHidden = false
             textField.endEditing(true)
         }
     }
     
-    func getCategory(index: Int) -> Category {
+    func getCategory(index: Int) -> Category
+    {
         
         switch index {
         case 0:
@@ -86,39 +105,28 @@ class NewAdvViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     }
     
-    /*func textFieldDidBeginEditing(textField: UITextField) {
-        if textField == location {
-            animateViewMoving(up: true, moveValue: 100)
-        }
+    
+    @IBAction func camaraClicked(_ sender: UIButton)
+    {
+        popOverWindow(msg: "This function which involves using camara device \n will be implemented in Assignment 2")
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        if textField == location {
-            animateViewMoving(up: false, moveValue: 100)
-        }
-    }
     
-    func animateViewMoving (up:Bool, moveValue :CGFloat){
-        let movementDuration:TimeInterval = 0.3
-        let movement:CGFloat = ( up ? -moveValue : moveValue)
-        
-        UIView.beginAnimations("animateView", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(movementDuration)
-        
-        //self.view.frame = CGRectOffset(self.view.frame, 0, movement)
-        UIView.commitAnimations()
-    }*/
-    
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func popOverWindow(msg:String)
+    {
+        let popOverVC = UIStoryboard(name:"Main", bundle:nil);
+        let pp = popOverVC.instantiateViewController(withIdentifier: "sbPopUpId") as! PopupViewController;
+        pp.mess = msg;
+        pp.view.frame = self.view.frame;
+        self.addChildViewController(pp);
+        self.view.addSubview(pp.view);
+        pp.didMove(toParentViewController: self);
     }
     
 

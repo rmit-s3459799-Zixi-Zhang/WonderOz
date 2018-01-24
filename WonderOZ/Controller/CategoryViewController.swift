@@ -2,132 +2,94 @@
 //  CategoryViewController.swift
 //  WonderOZ
 //
-//  Created by Zhangzixi on 2018/1/21.
-//  Copyright © 2018年 iOSWorld. All rights reserved.
+//  Created by Jason-Zhuang on 22/1/18.
+//  Copyright © 2018 iOSWorld. All rights reserved.
 //
 
 import UIKit
 
-class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+private let reuseIdentifier = "categoryCell"
+
+class CategoryViewController: UICollectionViewController
+{
+    //datasouce [CategoryClass]
+    var myCategories = AdventureData.adventureInstance.adventureCategories;
+    private let leftAndRighPadding:CGFloat = 30.0
+    private let numberOfItemsPerRow:CGFloat = 2.0
+    private let heightAjustment:CGFloat = 30.0
     
-    var categoryList:[category] = CategoryData.cateInstance.getCategoryList();
-    //let Array:[String] = ["camping", "park1"]
     
-    @IBOutlet weak var myCollectionView: UICollectionView!
-    
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        
-        /*let itemsize = myCollectionView.frame.size.width/2 - 2;
-        print(itemsize);
-        
-        let layout = UICollectionViewFlowLayout();
-        //layout.sectionInset = UIEdgeInsetsMake(20, 0, 10, 0)
-        layout.itemSize = CGSize(width: itemsize, height: itemsize);
-        layout.minimumInteritemSpacing = 2;
-        layout.minimumLineSpacing = 2;
-        myCollectionView.setCollectionViewLayout(layout, animated: true)
-        myCollectionView.reloadData()*/
-        
-        //myCollectionView.collectionViewLayout = layout;
-        
-       
-        //layout.itemSize = CGSize(width: itemSize)
-        
-        // Do any additional setup after loading the view.
+        let width = (collectionView!.frame.width - leftAndRighPadding )/numberOfItemsPerRow
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize.init(width: width, height: width)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        let itemsize = myCollectionView.frame.size.width/2 - 2;
-        print(itemsize);
-        
-        let layout = UICollectionViewFlowLayout();
-        //layout.sectionInset = UIEdgeInsetsMake(20, 0, 10, 0)
-        layout.itemSize = CGSize(width: itemsize, height: itemsize);
-        layout.minimumInteritemSpacing = 2;
-        layout.minimumLineSpacing = 2;
-        myCollectionView.setCollectionViewLayout(layout, animated: true)
-        myCollectionView.reloadData()
-        
-        //myCollectionView.collectionViewLayout = layout;
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    override func viewDidAppear(_ animated: Bool)
+    {
+        myCategories = AdventureData.adventureInstance.initAdventureCategories();
+        collectionView?.reloadData();
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryList.count;
+    // MARK: UICollectionViewDataSource
+    override func numberOfSections(in collectionView: UICollectionView) -> Int
+    {
+        return 1
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let adventure = self.categoryList[indexPath.row]
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! myCell
-        
-        cell.imageView.image = adventure.cateImage;
-        
-        cell.EventTitle.text = adventure.title;
-        cell.NumberOfEvent.text = String(adventure.NumOfAdv) + " Adventures";
-        
-        //cell.imageView.image = UIImage(named: Array[indexPath.row] + ".JPG")
-        /*if indexPath.row == 0
-        {
-            print("Test 1")
-            
-        }
-        if indexPath.row == 1 {
-            print("gozmike on @producthunt")
-            
-        }
-        if indexPath.row == 2 {
-            print("Test 3")
-            
-        }*/
-        
-        
+
+
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return self.myCategories!.count;
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryViewCell
+        let cate = myCategories![indexPath.item]
+        cell.categoryImage.image = UIImage(named: cate.categoryName)
+        cell.categoryName.text = cate.categoryName
+        cell.numberOfItems.text = String(cate.adventureList.count) + " adventures"
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
-        let cag = categoryList[indexPath.item]
-        self.performSegue(withIdentifier: "CateToAdvSegue", sender: cag.Cate)
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        let myCate:CategoryClass = myCategories![indexPath.item]
+        
+        let advList = AdventureData.adventureInstance.getAdventuresByCategory(category: myCate.categoryIndex);
+        if  advList.count == 0
+        {
+            popOverWindow(msg: "This is no Adventure!")
+            return
+        }
+        
+        
+        self.performSegue(withIdentifier: "categoryToList", sender: myCate.categoryIndex)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-
-        if segue.identifier == "CateToAdvSegue"
+        if segue.identifier == "categoryToList"
         {
-            let vc = segue.destination as! AdvTableViewController
-           
-            vc.seleted_Index = sender as? Category
-                
-                //var cell = self.collectionView.cellForItem(at: indexPaths)
-                //vc.seleted_Index =
-                //var temp : [Int] = index;
-                //print(index)
-                
-                /*let ind : Int = 0;
-                switch ind{
-                case Category.camping:
-                    vc.seleted_Index = Category.camping;
-                    break;
-                    
-                default:
-                    break;
-                }*/
-                
-          
-            
+            let controller = segue.destination as! AdvTableViewController
+            controller.myCategory = sender as? Category
         }
-        
-        
     }
+    
+    func popOverWindow(msg:String)
+    {
+        let popOverVC = UIStoryboard(name:"Main", bundle:nil);
+        let pp = popOverVC.instantiateViewController(withIdentifier: "sbPopUpId") as! PopupViewController;
+        pp.mess = msg;
+        pp.view.frame = self.view.frame;
+        self.addChildViewController(pp);
+        self.view.addSubview(pp.view);
+        pp.didMove(toParentViewController: self);
+    }
+
 
 }
